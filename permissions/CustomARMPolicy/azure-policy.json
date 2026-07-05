@@ -1,0 +1,216 @@
+{
+  "properties": {
+    "displayName": "powerbi-retail-sandbox Sandbox Policy",
+    "description": "Deny-style sandbox policy for the Power BI Retail beginner workstation lab. Constrains deployment to approved lab VM sizes, Windows VM supporting resource types, LRS storage/disk SKUs, and approved Azure regions while allowing the VM, networking, storage, managed disk, and Custom Script Extension resources required by the lab deployment.",
+    "policyType": "Custom",
+    "mode": "All",
+    "metadata": {
+      "category": "CloudLabs Sandbox",
+      "source": "CloudLabs Builder",
+      "lab": "Power BI Retail Store Performance Report",
+      "notes": "Validated resource type/property usage against Microsoft Learn ARM template reference for Microsoft.Compute/virtualMachines, Microsoft.Storage/storageAccounts, and Microsoft.Network resource types. Policy aliases should be reviewed with Get-AzPolicyAlias in the target tenant if Azure adds or changes aliases."
+    },
+    "parameters": {
+      "allowedLocations": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Allowed locations",
+          "description": "Azure regions approved for this lab sandbox. The list is intentionally limited to common CloudLabs regions to constrain cost and data residency without blocking standard lab placement."
+        },
+        "defaultValue": [
+          "eastus",
+          "eastus2",
+          "centralus",
+          "southcentralus",
+          "westus2",
+          "westus3",
+          "westeurope",
+          "northeurope",
+          "uksouth",
+          "canadacentral",
+          "australiaeast",
+          "southeastasia"
+        ]
+      },
+      "allowedVmSkus": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Allowed VM sizes",
+          "description": "Approved cost-bounded Windows workstation sizes for running Power BI Desktop in this beginner lab."
+        },
+        "defaultValue": [
+          "Standard_B2s",
+          "Standard_B2ms"
+        ]
+      },
+      "allowedResourceTypes": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Allowed resource types",
+          "description": "Resource types required for the single Windows Lab VM, Custom Script Extension, networking, storage, and managed disks. Other resource types are denied in the learner sandbox."
+        },
+        "defaultValue": [
+          "Microsoft.Compute/virtualMachines",
+          "Microsoft.Compute/virtualMachines/extensions",
+          "Microsoft.Compute/disks",
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/virtualNetworks/subnets",
+          "Microsoft.Network/networkInterfaces",
+          "Microsoft.Network/networkSecurityGroups",
+          "Microsoft.Network/networkSecurityGroups/securityRules",
+          "Microsoft.Network/publicIPAddresses",
+          "Microsoft.Storage/storageAccounts",
+          "Microsoft.Resources/deployments"
+        ]
+      },
+      "allowedStorageAccountSkus": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Allowed storage account SKUs",
+          "description": "Locally redundant storage account SKUs only. Geo- and zone-redundant storage is denied for sandbox cost control."
+        },
+        "defaultValue": [
+          "Standard_LRS",
+          "Premium_LRS"
+        ]
+      },
+      "allowedManagedDiskSkus": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Allowed managed disk SKUs",
+          "description": "Locally redundant managed disk SKUs commonly used by low-cost Windows lab VMs. Ultra disks and ZRS disks are denied."
+        },
+        "defaultValue": [
+          "Standard_LRS",
+          "StandardSSD_LRS",
+          "Premium_LRS"
+        ]
+      }
+    },
+    "policyRule": {
+      "if": {
+        "anyOf": [
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "notIn": "[parameters('allowedResourceTypes')]"
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "in": "[parameters('allowedResourceTypes')]"
+              },
+              {
+                "field": "location",
+                "exists": "true"
+              },
+              {
+                "field": "location",
+                "notEquals": "global"
+              },
+              {
+                "field": "location",
+                "notIn": "[parameters('allowedLocations')]"
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Compute/virtualMachines"
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Compute/virtualMachines/sku.name",
+                  "in": "[parameters('allowedVmSkus')]"
+                }
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Compute/virtualMachines"
+              },
+              {
+                "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType",
+                "exists": "true"
+              },
+              {
+                "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType",
+                "notIn": "[parameters('allowedManagedDiskSkus')]"
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Compute/virtualMachines"
+              },
+              {
+                "count": {
+                  "field": "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*]",
+                  "where": {
+                    "allOf": [
+                      {
+                        "field": "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.storageAccountType",
+                        "exists": "true"
+                      },
+                      {
+                        "field": "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.storageAccountType",
+                        "notIn": "[parameters('allowedManagedDiskSkus')]"
+                      }
+                    ]
+                  }
+                },
+                "greater": 0
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Compute/disks"
+              },
+              {
+                "field": "Microsoft.Compute/disks/sku.name",
+                "exists": "true"
+              },
+              {
+                "field": "Microsoft.Compute/disks/sku.name",
+                "notIn": "[parameters('allowedManagedDiskSkus')]"
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Storage/storageAccounts"
+              },
+              {
+                "field": "Microsoft.Storage/storageAccounts/sku.name",
+                "exists": "true"
+              },
+              {
+                "field": "Microsoft.Storage/storageAccounts/sku.name",
+                "notIn": "[parameters('allowedStorageAccountSkus')]"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}
