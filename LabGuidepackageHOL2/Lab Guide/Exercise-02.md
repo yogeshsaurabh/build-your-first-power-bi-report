@@ -67,7 +67,7 @@ In this task, you will align the visuals on the canvas using gridlines and snap-
      ![](./Images/L2E2T1S6.png)
 
    - **Text (2)**: Set a consistent font family and sizes for titles, cards, and tab headers
-   - Click **Apply (3)**
+   - Click **Apply (3)**.
 
      ![](./Images/L2E2T1S7.png)
 
@@ -210,204 +210,215 @@ In this task, you will add presentation elements — a background, section shape
 
 1. Save the report.
 
-> **✅ Validation**: Confirm that the report page includes at least one design enhancement — such as a background, shape, or formatted title — while preserving readability and business focus.
+## Task 4: Add a Bullet Chart from AppSource
+ 
+Contoso needs to see at a glance which cities beat, met, or missed the sales target. A **Bullet Chart** packs actual value, target, and colour-coded performance bands into one compact row per city — better than a plain bar chart for KPI dashboards.
+ 
+1. In the **Visualizations** pane, click the **ellipsis (…)** and select **Get more visuals**.
 
-## Task 4: Add custom and third-party visuals from AppSource
+   ![](./Images/e2t4s1.png)
 
-In this task, you will extend the native visualization library by importing a custom visual from AppSource and configuring it with your data. AppSource offers hundreds of Microsoft-certified and third-party visuals such as KPI indicators, gauges, and word clouds.
+2. On the **AppSource** tab, search for `Bullet Chart`, select the **certified** result, and click **Add**. Click **OK** on the import confirmation.
 
-1. In Power BI Desktop, locate the **Visualizations** pane.
+   ![](./Images/e2t4s2.png)
 
-1. Click the **ellipses (…) (1)** at the end of the visual icons and select **Get more visuals (2)**.
+   ![](./Images/e2t4s3.png)
 
-   ![](./Images/L2E2T4S1.png)
+3. Click the new **Bullet Chart** icon in the **Visualizations** pane to add it to the report canvas. Position and resize it under the KPI card row.
 
-1. In the **Power BI visuals** (AppSource) window, ensure the **AppSource** tab is selected, and in the search box **(1)**, search for a visual suitable for the reporting scenario, such as:
+   ![](./Images/e2t4s4.png)
 
-   ```
-   Gauge
-   ```
+   ![](./Images/e2t4s5.png)
 
-   > **Note**: Other good choices for this scenario include **KPI indicator**, **Bullet chart**, or **Word Cloud**. Prefer visuals with the blue **certified** badge, which have passed Microsoft's code review.
+4. From the **Data** pane, populate the field wells:
+   - **Category**: `Stores[City]`
+   - **Value**: `Sales[Total Sales]`
 
-   ![](./Images/L2E2T4S2.png)
+   ![](./Images/e2t4s6.png)
 
-1. Select the visual from the results **(1)** and click **Add (2)**.
+5. In **Format visual**, set the range, target, and colours so all eight Contoso cities read on a consistent scale (their Total Sales are between about $7,300 and $9,100):
+   - **Values > Target**: `8000` — Contoso's H1 city benchmark
+   - **Values > Minimum**: `0`
+   - **Values > Needs Improvement**: `7000` (below this = poor band)
+   - **Values > Satisfactory**: `9000` (below = on-target, above = good)
+   - **Values > Maximum**: `10000`
 
-   ![](./Images/L2E2T4S3.png)
+   ![](./Images/e2t4s29.png)
 
-1. When the **Import successful** message appears, click **OK**, and confirm that the new visual's icon now appears in the **Visualizations** pane.
-
-   ![](./Images/L2E2T4S4.png)
-
-1. Click the new visual's icon to add it to the report canvas, and position it in your layout.
-
-1. With the visual selected, populate it from the **Data** pane with the required fields — for example, drag **Quantity** (or a revenue measure) into the visual's value field well.
-
-   ![](./Images/L2E2T4S5.png)
-
-1. In **Format visual**, configure the visual's options — such as minimum/maximum values, target, colours, and labels — so it matches the report theme.
-
-   ![](./Images/L2E2T4S6.png)
-
-1. Evaluate whether the visual genuinely improves understanding of the report — if it doesn't add clarity, replace it or remove it.
-
-1. Save the report.
-
-> **✅ Validation**: Confirm that at least one AppSource visual has been added to the report and configured with data.
+6. Save the report. Each Contoso city now shows a compact bar-plus-target-plus-bands indicator that reads at a glance.
 
 ## Task 5: Add tooltips, bookmarks, and buttons for interactivity
-
-In this task, you will add interactive components that improve navigation and provide additional context: a **report page tooltip** that reveals extra detail on hover, **bookmarks** that capture alternate view states, and a **button** that lets users switch between them.
-
-### Part A: Create a tooltip page
-
-1. At the bottom of the report canvas, click the **+ (New page)** icon to create a new report page, and rename it **Tooltip - Item Detail**.
-
+ 
+In this task, you will make the dashboard interactive in three ways: a **report-page tooltip** that shows deep store detail on hover, **bookmarks** that capture two named view states (Executive Summary and Analyst Detail), and a **button** that switches between them.
+ 
+### Part A: Build the tooltip page
+ 
+1. At the bottom of the report canvas, click the **+ (New page)** icon. 
+ 
    ![](./Images/L2E2T5S1.png)
 
-1. With no visual selected, open **Format page** and configure:
+1. Right click on the page and rename the new page:
+   ```
+      Store Detail Tooltip
+   ```
 
-   - **Page information > Allow use as tooltip (1)**: On
-   - **Canvas settings > Type (2)**: Tooltip
+   ![](./Images/L2E2T5SS1.png)
 
-   ![](./Images/L2E2T5S2.png)
+2. With no visual selected, open **Format page** and configure:
+   - **Page information > Allow use as tooltip**: **On**
 
-   > **Note**: The Tooltip canvas size (320 × 240) keeps the pop-up compact. You can choose **Custom** for a slightly larger tooltip if needed.
+      ![](./Images/L2E2T5SS2.png)
 
-1. Add one or two small supporting visuals to the tooltip page — for example, a compact card showing revenue and a mini column chart of quantity by month.
+   - **Canvas settings > Type**: **Tooltip** (this locks the canvas to 320 × 240 px)
 
-   ![](./Images/L2E2T5S3.png)
+      ![](./Images/L2E2T5SS3.png)
 
-### Part B: Assign the tooltip page to a visual
+3. Add two compact visuals to the tooltip canvas — a KPI card across the top and a clustered bar chart underneath. Build each in turn:
 
-1. Return to the main report page and select the visual that will use the custom tooltip (for example, the item sales bar chart).
+   **Card — Total Sales**
+   1. Click an empty area of the tooltip canvas.
 
-1. In **Format visual > General**, expand **Tooltips** and configure:
+   2. In the **Visualizations** pane, select the **Card** icon.
 
-   - **Type (1)**: Report page
-   - **Page (2)**: Tooltip - Item Detail
+      ![](./Images/e2ss4.png)
+
+   3. From the **Data** pane, drag `Sales[Total Sales]` into the **Fields** well.
+
+      ![](./Images/e2ss5.png)
+
+   4. Resize the card to about `320 × 70 px` and position it across the top of the canvas.
+
+      ![](./Images/e2ss6.png)
+
+
+   **Category mini-bar — Top categories**
+   1. Click an empty area of the canvas.
+   2. In the **Visualizations** pane, select the **Clustered bar chart** icon.
+
+      ![](./Images/e2ss7.png)
+
+   3. Drag `Products[Category]` into the **Y-axis** well.
+
+      ![](./Images/e2ss8.png)
+
+   4. Drag `Sales[Total Sales]` into the **X-axis** well.
+
+      ![](./Images/e2ss9.png)
+
+   5. Resize the chart to fill the bottom of the canvas — roughly `320 × 170 px`.
+   6. In **Format visual**, apply the compact settings so the bar chart fits the tooltip canvas cleanly. **General > Title > Text**: `Top categories`, **Font size** `10`
+
+      ![](./Images/e2ss10.png)
+
+### Part B: Wire the tooltip to the Sales by Store visual
+ 
+4. Return to the main **Store Performance** page and select the Sales by Store bar chart.
 
    ![](./Images/L2E2T5S4.png)
 
-1. Hover over a data point in the visual and confirm the custom tooltip page appears with context filtered to that item.
+5. Navigate to **Format visual > General > Tooltips**, 
+   
+   ![](./Images/e1ss12.png)
 
-   ![](./Images/L2E2T5S5.png)
+1. Set:
+   - **Type**: **Report page**
+   - **Page**: **Store Detail Tooltip**
 
-### Part C: Create bookmarks for alternate views
+   ![](./Images/e1ss15.png)
 
-1. On the **View** ribbon, select the checkboxes to enable the **Bookmarks (1)** and **Selection (2)** panes.
+6. Hover over any bar in the chart. The tooltip page appears, filtered automatically to that store — the two cards recalculate and the mini-bar shows that store's category mix.
 
-   ![](./Images/L2E2T5S6.png)
+   ![](./Images/e1ss14.png)
 
-1. Arrange the report page in its full, detailed state (all visuals visible), then in the **Bookmarks** pane click **Add (1)**. Open the new bookmark's **ellipses (…) (2)** menu, select **Rename (3)**, and name it:
+### Part C: Capture two bookmarks
+ 
+7. On the **View** ribbon, enable the **Bookmarks** and **Selection** panes.
 
+   ![](./Images/e1ss16.png)
+
+8. Arrange the page in its **full analyst view** — every visual visible, no slicers filtered. In the **Bookmarks** pane click **Add**, then use the **⋯** menu to **Rename** to:
    ```
-   Detailed View
+      Analyst Detail
    ```
+ 
+   ![](./Images/e1ss17.png)
+ 
+9. Now build the executive-summary state:
+   - In the **Selection** pane, click the **eye icon** next to the store × category **table** to hide them.
 
-   ![](./Images/L2E2T5S7.png)
+      ![](./Images/e1ss18.png)
 
-1. Change the page display state — for example, in the **Selection** pane, hide the detail table visual by clicking its **eye icon** — and then add another bookmark named:
+   - In the **Bookmarks** pane click **Add**, then **Rename** to `Executive Summary`.
 
-   ```
-   Summary View
-   ```
+      ![](./Images/e1ss19.png)
 
-   ![](./Images/L2E2T5S8.png)
+   > **Note:** You now have two bookmarks: `Analyst Detail` (everything visible) and `Executive Summary` (only KPIs, cards, main chart, and map).
+   
+### Part D: Add a toggle button
+ 
+10. On the **Insert** ribbon, select **Buttons > Blank**. Position the button in the top-right of the page near the report title.
 
-   > **Note**: A bookmark captures the current state of the page, including filters, slicers, visibility, and sort order. Use the bookmark's ellipses menu to control which aspects (Data, Display, Current page) are captured.
+      ![](./Images/e1ss20.png)
 
-### Part D: Add a button and wire it to a bookmark
+11. In **Format button (1)**:
+    - **Style(2) > Text (3)**: Toggle on (4)
+    - Text: `Executive Summary` (5)
 
-1. On the **Insert** ribbon, select **Buttons (1)** and choose a button style such as **Bookmark** or **Blank (2)**.
+      ![](./Images/e1ss21.png)
 
-   ![](./Images/L2E2T5S9.png)
+    - **Action (1)**: **On (2)**
 
-1. Position the button near the top of the page and, in **Format button**, set the **Text** to `Switch View` (formatted to match the theme).
+      ![](./Images/e1ss22.png)
 
-1. In **Format button**, toggle **Action (1)** to On and configure:
+    - **Action > Type**: **Bookmark**
+    - **Action > Bookmark**: **Executive Summary**
 
-   - **Type (2)**: Bookmark
-   - **Bookmark (3)**: Summary View
+      ![](./Images/e1ss23.png)
 
-   ![](./Images/L2E2T5S10.png)
+12. Hold **Ctrl** and click the button. The page collapses to the executive state. Add a second button labelled `Back to Detail` wired to the `Analyst Detail` bookmark so users can return.
 
-1. Test the interaction by holding **Ctrl** and clicking the button in Power BI Desktop — the page should switch to the Summary View state.
+      ![](./Images/e1ss24.png)
 
-   ![](./Images/L2E2T5S11.png)
-
-   > **Tip**: For a complete toggle experience, add a second button on the Summary View that navigates back to the **Detailed View** bookmark.
-
-1. Save the report, then click **Publish** on the **Home** ribbon and republish to **Workspace-<inject key="DeploymentID" enableCopy="false"/>**, choosing **Replace** when prompted, so the enhanced version is live in the Power BI Service.
-
-   ![](./Images/L2E2T5S12.png)
-
-> **✅ Validation**: Confirm that the report includes at least one tooltip-enabled visual and one working button that triggers bookmark-based navigation or a saved view state.
-
+13. Save the report.
+ 
 ## Task 6: Generate a narrative summary with Copilot
-
-In this task, you will use **Copilot in Power BI**, where available, to generate a plain-language narrative summary of the report for an executive audience — and, just as importantly, learn to validate AI-generated output before it goes anywhere near a stakeholder.
-
-1. Open the enhanced **StorePerformanceReport** in the **Power BI Service** (Copilot is also available in Power BI Desktop if enabled in your environment).
-
-1. From the top ribbon of the report, click the **Copilot** button to open the Copilot pane.
+ 
+Contoso's executives want a plain-language summary alongside the visuals. Power BI's **Narrative** visual, powered by Copilot, reads the visuals on the page and generates a written summary with footnoted references to the source visuals.
+ 
+1. On the report ribbon, click on Home tab and click **Copilot** to open the Copilot pane.
 
    ![](./Images/L2E2T6S1.png)
 
-   > **Note**: Copilot requires the workspace to be on a supported Fabric capacity (F2 or higher) or Power BI Premium, with Copilot enabled in the tenant settings by an administrator.
+1. Connect to Workspace, Select PowerBi workspace.
+      ![](./Images/e1ss25.png)
 
-1. In the Copilot pane, review the suggested prompts, then select the report page that contains the key executive visuals.
+1. click an empty area of the canvas. In the **Visualizations** pane, select the **narrative** icon. Power BI reads the visuals on the page and auto-generates a paragraph of contextual insights.
+   ![](./Images/e1ss26.png)
 
-1. In the prompt box, enter the following and press **Send**:
-
+2. Use one of the quick-prompt buttons — **Give an executive summary**, **Answer likely questions from leadership**, or **Create a bulleted list of insights** — or type a custom prompt in the text box, for example:
    ```
-   Summarize the key business insights from this report page for an executive audience.
-   ```
-
-   ![](./Images/L2E2T6S2.png)
-
-1. Review the generated narrative in the Copilot pane.
-
-   ![](./Images/L2E2T6S3.png)
-
-1. Refine the output by entering a follow-up prompt that focuses on specific business outcomes, for example:
-
-   ```
-   Focus the summary on the top three items by quantity sold and any notable exceptions.
+   Summarize the data.
    ```
 
-1. **Validate** the generated summary against the visuals and measures in the report — check every number, ranking, and trend claim.
+   ![](./Images/e1ss27.png)
 
-   > **Warning**: Always validate AI-generated output before sharing it with stakeholders. Copilot can misread a trend or misstate a figure; the analyst remains responsible for accuracy.
+3. Confirm **Reference visuals** is set to **Current page**, then click **Update**. Copilot writes a narrative such as *"Overall total sales are $66,838 across 1,200 units, with Contoso Plaza identified as the top store…"*. Each sentence is footnoted with the visual it draws from.
+   
+4. Resize and position the narrative visual under the KPI card row. Cross-check every figure against the source visuals — KPI cards, Sales by Store bar chart, and Sales Trend line chart — and edit any wording that misrepresents the data. Save the report.
 
-1. If your environment supports it, add the narrative to the report page — in Power BI Desktop, insert the **Narrative** visual with Copilot from the Visualizations pane — or copy the generated text and record it for later use in your executive briefing.
+   ![](./Images/e1ss28.png)
 
-   ![](./Images/L2E2T6S4.png)
-
-   > **Note**: If Copilot is not available in your environment, locate where the Copilot button would normally appear on the report ribbon, and document the specific dependency preventing its use (for example, capacity SKU, licensing, or a disabled tenant setting).
-
-> **✅ Validation**: Confirm that a narrative summary was generated and reviewed for accuracy, or document the specific licensing or tenant dependency that prevents Copilot use.
-
-> **Congratulations** on completing the exercise! Now, it's time to validate it. Here are the steps:
->
-> - If you receive a success message, you have successfully completed the lab.
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
-
-<validation step="00000000-0000-0000-0000-000000000002" />
-
-## 📝 Summary
-
+ 
+##  Summary
+ 
 In this exercise, you have accomplished the following:
-
+ 
 - Applied a layout grid and a consistent brand theme
 - Added rule-based conditional formatting to highlight performance
 - Enhanced the page with a background, shapes, a title banner, and subtle effects
 - Imported and configured a custom visual from AppSource
 - Built a report page tooltip, bookmarks, and a bookmark-triggered button
 - Generated and validated a Copilot narrative summary, and republished the enhanced report
-
 ### You have successfully completed the lab. Click on **Next >>**.
-
-![](./Images/gs-next.png)
+ 
+![](./Images/gs-next.png.png)
