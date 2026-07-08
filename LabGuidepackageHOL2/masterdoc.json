@@ -2,18 +2,18 @@
   {
     "Name": "Build Your First Power BI Report",
     "Language": "English",
-    "BaseURL": "https://raw.githubusercontent.com/CloudLabsAI-Azure/build-your-first-power-bi-report/refs/heads/main/LabGuidepackageHOL2/",
+    "BaseURL": "https://github.com/CloudLabsAI-Azure/build-your-first-power-bi-report/tree/main/LabGuidepackageHOL2",
     "Files": [
       {
-        "RawFilePath": "Lab%20Guide/GettingStarted-V2.md",
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/build-your-first-power-bi-report/refs/heads/main/LabGuidepackageHOL2/Lab%20Guide/GettingStarted-V2.md",
         "Order": 1
       },
       {
-        "RawFilePath": "Lab%20Guide/Exercise-01.md",
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/build-your-first-power-bi-report/refs/heads/main/LabGuidepackageHOL2/Lab%20Guide/Exercise-01.md",
         "Order": 2
       },
       {
-        "RawFilePath": "Lab%20Guide/Exercise-02.md",
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/build-your-first-power-bi-report/refs/heads/main/LabGuidepackageHOL2/Lab%20Guide/Exercise-02.md",
         "Order": 3
       }
     ]
