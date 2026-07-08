@@ -29,11 +29,15 @@ In this task, you will align the visuals on the canvas using gridlines and snap-
 
 1. Return to **Power BI Desktop** and open the **StorePerformanceReport** if it is not already open.
 
+   ![](./Images/e2s1.png)
+
 1. Navigate to the report page that will be enhanced for executive presentation.
 
-1. On the **View** ribbon, select the checkboxes for **Gridlines (1)** and **Snap to grid (2)**.
+   ![](./Images/e2s1.png)
 
-   ![](./Images/L2E2T1S1.png)
+1. On the **View (1)** ribbon, select the checkboxes for **Gridlines ** and **Snap to grid (2)**.
+
+   ![](./Images/e2s2.png)
 
    > **Note**: If prompted that snapping applies to objects as you move them, click **OK** to continue.
 
@@ -47,7 +51,7 @@ In this task, you will align the visuals on the canvas using gridlines and snap-
 
 1. On the **View** ribbon, expand the **Themes** gallery.
 
-   ![](./Images/L2E2T1S3.png)
+   ![](./Images/e1s3.png)
 
 1. Select an appropriate built-in theme that suits an executive audience — subtle colours with good contrast, such as **Executive** or **Accessible City Park**.
 
