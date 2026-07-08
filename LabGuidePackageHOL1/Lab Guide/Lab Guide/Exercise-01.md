@@ -40,8 +40,8 @@ In this task, you will sign in to the Power BI service in a browser and confirm 
 
 2. Sign in with the CloudLabs credentials:
 
-   - Username: `<inject key="AzureAdUserEmail"></inject>`
-   - Password: `<inject key="AzureAdUserPassword"></inject>`
+   - Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
 
    ![](../media/e1s3.png)
 
