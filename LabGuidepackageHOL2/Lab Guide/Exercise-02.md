@@ -165,14 +165,10 @@ In this task, you will add presentation elements — a background, section shape
 
 1. Configure the canvas background:
 
-   - **Color (1)**: A very light neutral tint from your theme
-   - Or click **Browse (2)** under Image to add the approved branded image from **C:\LabFiles\Images\contoso-background.png**
-   - **Image fit (3)**: Fit
-   - **Transparency (4)**: Adjust (for example, **85%**) so all visuals remain fully readable
+   - **Color**: A very light neutral tint from your theme
+   - **Transparency**: Adjust (for example, **15%**) so all visuals remain fully readable
 
-   ![](./Images/L2E2T3S3.png)
-
-   > **Note**: Also review the **Wallpaper** setting, which formats the area *outside* the report canvas — useful for widescreen presentation displays.
+      ![](./Images/L2E2T3S3.png)
 
 1. On the **Insert (1)** ribbon, select **Shapes (2)** and choose **Rectangle (3)**.
 
@@ -180,25 +176,35 @@ In this task, you will add presentation elements — a background, section shape
 
 1. Resize and position the rectangle across the top of the page to act as a **title banner**, and format it:
 
-   - **Style > Fill (1)**: A primary brand colour
-   - **Border (2)**: Off, or a subtle darker shade
-   - Send it behind other elements if needed using **Format > Send backward**
+   - **Style > Fill**: A primary brand colour
+   - **Border**: Off, or a subtle darker shade
 
-   ![](./Images/L2E2T3S6.png)
+      ![](./Images/L2E2T3S5.png)
+
+   - Send it behind other elements if needed by selecting the rectangle and using **Format (1) > Send backward (2)**
+
+     ![](./Images/L2E2T3S6.png)
 
 1. Add one or two thin **Line** shapes to visually separate sections of the page (for example, KPIs at the top from detail charts below).
 
-   ![](./Images/L2E2T3S5.png)
+   - Go to **Insert (1)> Shapes (2) > Line (3)**.
+
+      ![](./Images/L2E2T3S7-1.png)
+
+   - Click and drag to draw a thin horizontal line between your KPI cards row and the charts below.
+
+      ![](./Images/L2E2T3S7.png)
 
 1. On the **Insert** ribbon, select **Text box** and enter the following page title:
 
    ```
    Executive Performance Dashboard
    ```
+   ![](./Images/L2E2T3S9.png)
 
 1. Format the title so it matches the selected report theme — set the font, size (for example, **24pt**), colour (white or a brand colour that contrasts with the banner), and **bold**, then position it on the title banner.
 
-   ![](./Images/L2E2T3S6.png)
+   ![](./Images/L2E2T3S10.png)
 
 1. Select one of your main visuals and, in **Format visual > General > Effects**, review the subtle effect options:
 
@@ -206,11 +212,21 @@ In this task, you will add presentation elements — a background, section shape
    - **Visual border** — with **Rounded corners** (for example, `8 px`)
    - **Shadow** — a light outer shadow for gentle depth
 
-   ![](./Images/L2E2T3S7.png)
+      ![](./Images/L2E2T3S11.png)
 
 1. Apply consistent effects across the visuals on the page, then step back and confirm the overall design remains clean, professional, and easy to read.
 
-1. Save the report.
+1. Review and Save the report.
+
+   - final report looks like this after applying all.
+
+     ![](./Images/L2E2T3S12.png)
+
+   - Press **Ctrl + S**, or go to **File (1) > Save (2)**.
+   
+      ![](./Images/L2E2T1S8.png)
+
+      ![](./Images/L2E2T1S10.png)
 
 ## Task 4: Add a Bullet Chart from AppSource
  
