@@ -61,7 +61,7 @@ In this task, you will open Power BI Desktop on the lab virtual machine and load
 
    ![02](./Images/images/exercise-1/L2E1T1S6.png)
 
-1. On the **Power BI free license assigned** window, click on **Ok**.
+1. On the **Power BI free license assigned** window, click on **OK**.
 
    ![](./Images/images/exercise-1/L2E1T1S7.png)
 
