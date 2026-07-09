@@ -4,7 +4,7 @@
 
 ## 📘 Scenario
 
-The **StorePerformanceReport** - a pre-built `.pbix` file provided in your lab environment - currently lives only in Power BI Desktop on your lab machine. Contoso Retail's leadership team wants this report available in the cloud - viewable from any device, summarized in a single executive dashboard, shared with the right people at the right permission level, and refreshed automatically every day.
+The **StorePerformanceReport**, a pre-built `.pbix` file provided in your lab environment, currently lives only in Power BI Desktop on your labVM. Contoso Retail's leadership team wants this report available in the cloud, viewable from any device, summarized in a single executive dashboard, shared with the right people at the right permission level, and refreshed automatically every day.
 
 In this exercise, you will move your report to the Power BI Service and make it available to your audience: you will publish the report and its semantic model, build a dashboard from its key visuals, review the three primary sharing methods, and configure scheduled refresh.
 
