@@ -21,7 +21,7 @@ In this exercise, you will complete the following tasks:
 
 ## 🧩 Architecture Diagram
 
-   ![](./Images/archex1-1207.png)
+   ![](./Images/arch-ex1-1307.png)
 
 ## Task 1: Launch the environment and open your working report
 
