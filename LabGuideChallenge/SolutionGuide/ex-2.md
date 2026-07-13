@@ -94,11 +94,15 @@ In this task you will use Copilot in Power BI to generate an AI-powered summary 
 
 3. Verify the email address (1), and then select **Next (2)**.
 
-    ![](images1/t2s3png)
+    **Email/Username**: <inject key="AzureAdUserEmail"></inject> **(1)**
+
+    ![](images1/gs7.png)
 
 4. Enter the lab-provided password (1), and then select **Sign in (2)**.
 
-    ![](images1/t2s4.png)
+    **Temporaray Access Pass**: <inject key="AzureAdUserPassword"></inject> **(1)**
+
+    ![](images1/gs8.png)
 
 5. When prompted to sign in to all apps and websites on the device, select **No, this app only**.
 
@@ -108,9 +112,19 @@ In this task you will use Copilot in Power BI to generate an AI-powered summary 
 
     ![](images1/t2s6.png)
 
-7. If a Fabric workspace does not already exist, create one by selecting **New workspace (1)**, entering a unique workspace name (2), and selecting **Apply (3)**.
+1. Navigate to Fabric portal by using the below link.
 
-    ![](images1/t2s7.png)
+    ```
+    https://app.fabric.microsoft.com
+    ```
+
+7. If a Fabric workspace does not already exist, create one by selecting **New workspace (1)**, entering a unique workspace name **(2)**.
+
+    ![](images1/nl1.png)
+
+1. Select **PowerBI Pro** License and click on **Apply.**
+
+    ![](images1/nl2.png)
 
 8. In Power BI Desktop, select **Copilot (1)**, and then select **Select a workspace (2)**.
 
@@ -227,6 +241,8 @@ In this task you will save the completed report, publish it to a Fabric workspac
 33. Select **Export to PDF**.
 
     ![](images1/t4s11.png)
+
+    ![](images1/t4s12.png)
 
 34. Verify that the report is successfully exported and opens as a PDF containing the completed **Sales Performance – Board View** dashboard.
 
