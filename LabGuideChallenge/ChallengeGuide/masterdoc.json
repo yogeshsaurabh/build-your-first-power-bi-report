@@ -1,0 +1,20 @@
+[
+    {
+        "Name": "Challenge Lab Board-Ready Dashboard Challenge",
+        "Language": "English",
+        "Files": [
+          {
+            "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/multi-agent-orchestration-with-a2-a-My1Ff/refs/heads/main/Labguides/gettingstarted.md",
+            "Order": 1
+          },           
+          {
+            "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/multi-agent-orchestration-with-a2-a-My1Ff/refs/heads/main/Labguides/Exercise-1.md",
+            "Order": 2
+          },  
+          {
+            "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabsAI-Azure/multi-agent-orchestration-with-a2-a-My1Ff/refs/heads/main/Labguides/Exercise-2.md",
+            "Order": 3
+          }
+        ]
+    }
+]
