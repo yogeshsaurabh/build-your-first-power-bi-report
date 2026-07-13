@@ -1,0 +1,16 @@
+[
+    {
+        "Name": "Challenge Lab Board-Ready Dashboard Challenge",
+        "Language": "English",
+        "Files": [
+          {
+            "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/build-your-first-power-bi-report/refs/heads/main/LabGuideChallenge/SolutionGuide/ex-1.md",
+            "Order": 1
+          },           
+          {
+            "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/build-your-first-power-bi-report/refs/heads/main/LabGuideChallenge/SolutionGuide/ex-2.md",
+            "Order": 2
+          }
+        ]
+    }
+]
